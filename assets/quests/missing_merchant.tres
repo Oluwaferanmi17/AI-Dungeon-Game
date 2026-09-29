@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://d0y6cpr8vurne"]
+
+[ext_resource type="Script" uid="uid://pchheaoqtrfo" path="res://scripts/quests/quest_data.gd" id="1_eieky"]
+
+[resource]
+script = ExtResource("1_eieky")
+id = "missing_merchant"
+title = "The Missing Merchant"
+description = "A merchant has gone missing near the forest."
+objectives = Array[String](["Find the merchant", "Investigate the forest", "Return to the village"])
+reward_gold = 50
+metadata/_custom_type_script = "uid://pchheaoqtrfo"

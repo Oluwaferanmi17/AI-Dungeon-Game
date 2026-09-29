@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://di2vm6jbc4p8r"]
+
+[ext_resource type="Script" uid="uid://cmdo20xru1g2s" path="res://scenes/ui/hud.gd" id="1_0mwgc"]
+
+[node name="HUD" type="Control" unique_id=1597193620]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0mwgc")
+
+[node name="StatsContainer" type="VBoxContainer" parent="." unique_id=1261603442]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthLabel" type="Label" parent="StatsContainer" unique_id=1518574140]
+layout_mode = 2
+
+[node name="ManaLabel" type="Label" parent="StatsContainer" unique_id=1238882094]
+layout_mode = 2

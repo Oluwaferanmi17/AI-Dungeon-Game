@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://g1croal8sucn"]
+
+[ext_resource type="Script" uid="uid://dhabgys68edn6" path="res://scenes/ui/dialogue_box.gd" id="1_xg44k"]
+
+[node name="DialogueBox" type="Control" unique_id=1406029904]
+visible = false
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_xg44k")
+
+[node name="Background" type="Panel" parent="." unique_id=2099591046]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="." unique_id=1341652783]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpeakerName" type="Label" parent="Content" unique_id=1406914815]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="DialogueText" type="Label" parent="Content" unique_id=2137281275]
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="Content" unique_id=692761053]
+layout_mode = 2

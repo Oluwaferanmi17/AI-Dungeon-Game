@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://v6kw856q2l6d"]
+
+[ext_resource type="Script" uid="uid://dbusentx23t0w" path="res://scripts/world/main_world.gd" id="1_a8run"]
+[ext_resource type="PackedScene" uid="uid://c615ym4yeyxu8" path="res://scenes/player/player.tscn" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://l383accvjxif" path="res://scripts/npc.gd" id="2_6q06x"]
+[ext_resource type="Texture2D" uid="uid://ck3wlots6x78h" path="res://icon.svg" id="2_iuonh"]
+[ext_resource type="Script" uid="uid://dceld75iquiok" path="res://scenes/main/forest_trigger.gd" id="3_k2fmo"]
+[ext_resource type="Script" uid="uid://dt6ol2ck8xm1" path="res://scenes/main/npc.gd" id="5_a8run"]
+[ext_resource type="PackedScene" uid="uid://g1croal8sucn" path="res://scenes/ui/dialogue_box.tscn" id="6_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://khg24mvkltpe" path="res://scenes/ui/inventory_screen.tscn" id="7_hujxm"]
+[ext_resource type="PackedScene" uid="uid://di2vm6jbc4p8r" path="res://scenes/ui/hud.tscn" id="8_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://dbcdq420sowi8" path="res://scenes/ui/quest_log.tscn" id="9_b1x3f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1ije"]
+size = Vector2(180, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52g2o"]
+size = Vector2(100, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nydk"]
+size = Vector2(80, 60)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1ije"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25kmc"]
+size = Vector2(640, 60)
+
+[node name="Main" type="Node2D" unique_id=251455890]
+script = ExtResource("1_a8run")
+
+[node name="GrassGround" type="ColorRect" parent="." unique_id=1308575505]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.078431375, 1, 0.08627451, 0.9411765)
+
+[node name="Road" type="ColorRect" parent="." unique_id=781300971]
+offset_left = 280.0
+offset_top = 150.0
+offset_right = 360.0
+offset_bottom = 250.0
+color = Color(0.827451, 0.827451, 0.827451, 1)
+
+[node name="HouseBlacksmith" type="ColorRect" parent="." unique_id=28071501]
+offset_left = 120.0
+offset_top = 180.0
+offset_right = 220.0
+offset_bottom = 260.0
+color = Color(0.5882353, 0.29411766, 0, 1)
+
+[node name="Label" type="Label" parent="HouseBlacksmith" unique_id=1834955947]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -11.5
+offset_right = 43.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Blacksmith"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="HouseBlacksmith" unique_id=1332728418]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseBlacksmith/StaticBody2D" unique_id=1288963289]
+shape = SubResource("RectangleShape2D_t1ije")
+
+[node name="HouseTavern" type="ColorRect" parent="." unique_id=1448397907]
+offset_left = 440.0
+offset_top = 180.0
+offset_right = 540.0
+offset_bottom = 260.0
+color = Color(0.63370985, 0.07793907, 0.13184902, 1)
+
+[node name="Label" type="Label" parent="HouseTavern" unique_id=762925353]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Tavern"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="HouseTavern" unique_id=1689364136]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseTavern/StaticBody2D" unique_id=879359785]
+shape = SubResource("RectangleShape2D_52g2o")
+
+[node name="HouseWizard" type="ColorRect" parent="." unique_id=1117233696]
+offset_left = 280.0
+offset_top = 260.0
+offset_right = 360.0
+offset_bottom = 320.0
+color = Color(0.3267886, 0.0222559, 0.36407816, 1)
+
+[node name="Label" type="Label" parent="HouseWizard" unique_id=2050838060]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Wizard
+"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="HouseWizard" unique_id=1067053577]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseWizard/StaticBody2D" unique_id=1589623129]
+shape = SubResource("RectangleShape2D_8nydk")
+
+[node name="ForestZone" type="ColorRect" parent="." unique_id=894756312]
+offset_right = 640.0
+offset_bottom = 60.0
+color = Color(0.06653784, 0.21087882, 0.045564562, 1)
+
+[node name="Label" type="Label" parent="ForestZone" unique_id=562974927]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Forest Entrance
+"
+
+[node name="DialogueBox" parent="." unique_id=1406029904 instance=ExtResource("6_ow5a4")]
+visible = true
+offset_left = 278.0
+offset_top = 102.0
+offset_right = 278.0
+offset_bottom = 102.0
+
+[node name="NPCWizard" type="Area2D" parent="." unique_id=704419234 groups=["interactable"]]
+position = Vector2(280, 240)
+script = ExtResource("2_6q06x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCWizard" unique_id=1366036103]
+shape = SubResource("CircleShape2D_t1ije")
+
+[node name="Sprite2D" type="Sprite2D" parent="NPCWizard" unique_id=2131577120]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_iuonh")
+
+[node name="NPCGuard" type="Area2D" parent="." unique_id=1400043780 groups=["interactable"]]
+position = Vector2(420, 220)
+script = ExtResource("5_a8run")
+npc_id = "guard"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCGuard" unique_id=1796484707]
+shape = SubResource("CircleShape2D_t1ije")
+
+[node name="Sprite2D" type="Sprite2D" parent="NPCGuard" unique_id=1238872558]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_iuonh")
+
+[node name="Player" parent="." unique_id=1703024635 instance=ExtResource("1_hyk8p")]
+position = Vector2(320, 220)
+
+[node name="ForestTrigger" type="Area2D" parent="." unique_id=1613046448]
+script = ExtResource("3_k2fmo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestTrigger" unique_id=1056664445]
+position = Vector2(320, 30)
+shape = SubResource("RectangleShape2D_25kmc")
+
+[node name="InventoryScreen" parent="." unique_id=616912980 instance=ExtResource("7_hujxm")]
+
+[node name="HUD" parent="." unique_id=1597193620 instance=ExtResource("8_yyfjg")]
+
+[node name="QuestLog" parent="." unique_id=574242019 instance=ExtResource("9_b1x3f")]

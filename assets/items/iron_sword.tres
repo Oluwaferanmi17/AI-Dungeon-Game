@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://3pgcdm3yjljo"]
+
+[ext_resource type="Script" uid="uid://cnaeu2vbuqyot" path="res://scripts/items/item_data.gd" id="1_iqxpg"]
+
+[resource]
+script = ExtResource("1_iqxpg")
+id = "iron_sword"
+display_name = "Iron Sword"
+item_type = "weapon"
+attack_bonus = 5
+metadata/_custom_type_script = "uid://cnaeu2vbuqyot"

@@ -1,0 +1,22 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+.godot/
+.import/
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+.env
+.env.*
+!.env.example
+
+.vscode/
+.idea/
+
+*.log
+
+.DS_Store
+Thumbs.db

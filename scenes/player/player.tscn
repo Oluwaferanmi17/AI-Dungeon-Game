@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c615ym4yeyxu8"]
+
+[ext_resource type="Script" uid="uid://p777f0j5u63c" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="Texture2D" uid="uid://ck3wlots6x78h" path="res://icon.svg" id="2_gmlin"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_52g2o"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1ije"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1703024635 groups=["player"]]
+script = ExtResource("1_dovo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1888010736]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_gmlin")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1787144453]
+enabled = false
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=999635461]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=366182193]
+shape = SubResource("CircleShape2D_52g2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=527757521]
+shape = SubResource("CircleShape2D_t1ije")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=2063509933]

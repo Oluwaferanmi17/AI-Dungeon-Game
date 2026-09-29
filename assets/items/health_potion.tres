@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c1yfxlpgx4s8n"]
+
+[ext_resource type="Script" uid="uid://cnaeu2vbuqyot" path="res://scripts/items/item_data.gd" id="1_nm3t4"]
+
+[resource]
+script = ExtResource("1_nm3t4")
+id = "health_potion"
+display_name = "Health Potion"
+description = "Restores health when consumed"
+item_type = "consumable"
+stack_size = 99
+heal_amount = 25
+metadata/_custom_type_script = "uid://cnaeu2vbuqyot"

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://1gfdscri3n4p"]
+
+[ext_resource type="PackedScene" uid="uid://c615ym4yeyxu8" path="res://scenes/player/player.tscn" id="1_8jn3p"]
+[ext_resource type="Script" uid="uid://biohykl16nasi" path="res://scripts/world/forest_world.gd" id="1_k440o"]
+
+[node name="Forest" type="Node2D" unique_id=2085651730]
+script = ExtResource("1_k440o")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1329299363]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0037240507, 0.095813535, 0.06061746, 1)
+
+[node name="Player" parent="." unique_id=1703024635 instance=ExtResource("1_8jn3p")]
+
+[node name="Label" type="Label" parent="." unique_id=1772924734]
+offset_right = 175.0
+offset_bottom = 23.0
+text = "You entered the forest"
