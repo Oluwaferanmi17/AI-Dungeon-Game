@@ -50,6 +50,8 @@ func _on_ai_response_received(_result: int, _response_code: int, _headers: Packe
 		if response_data.has("narration"):
 			print("Narration: ", response_data["narration"])
 			print("Event: ", response_data["event"])
+			if response_data.has("callback_reference") and response_data["callback_reference"] != null:
+				print("Callback: ", response_data["callback_reference"])
 			var evt: String = response_data["event"]
 			if evt == "VILLAGE_ATTACKED" or evt == "VILLAGE_SAVED":
 				GameState.trigger_world_event(evt)
@@ -142,7 +144,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		#send_ai_action("I look around the room")
 	if event.is_action_pressed("test_ai"):
 		#send_npc_dialogue("wizard", "Let's start over, I'm sorry about earlier")
-		send_ai_action("I set fire to the village storehouse")
+		#send_ai_action("I set fire to the village storehouse")
+		send_director_action("I walk into the tavern and ask if anyone's heard news about me")
 	if event.is_action_pressed("test_ai_quest"):
 		request_ai_quest("a dangerous creature terrorizing the village")
 	if event.is_action_pressed("test_ai_event"):
@@ -194,4 +197,15 @@ func request_ai_encounter(danger_level: String = "low") -> void:
 	var url: String = "http://127.0.0.1:8000/generate_encounter"
 	var headers: PackedStringArray = ["Content-Type: application/json"]
 	var body: String = JSON.stringify({ "danger_level": danger_level })
+	http_request.request(url, headers, HTTPClient.METHOD_POST, body)
+
+func send_director_action(action_text: String) -> void:
+	var summary: String = GameState.build_world_summary()
+	print("--- World Summary ---\n", summary, "\n---")
+	var url: String = "http://127.0.0.1:8000/director_action"
+	var headers: PackedStringArray = ["Content-Type: application/json"]
+	var body: String = JSON.stringify({
+		"world_summary": summary,
+		"player_action": action_text
+	})
 	http_request.request(url, headers, HTTPClient.METHOD_POST, body)

@@ -256,3 +256,34 @@ signal world_event_triggered(event_name: String)
 func trigger_world_event(event_name: String) -> void:
 	print("World event triggered: ", event_name)
 	world_event_triggered.emit(event_name)
+
+func build_world_summary() -> String:
+	var lines: Array[String] = []
+
+	lines.append("Player gold: %d" % gold)
+	lines.append("Reputation: %d (%s)" % [reputation, "wanted" if is_wanted else "not wanted"])
+
+	if completed_quests.size() > 0:
+		lines.append("Completed quests: " + ", ".join(completed_quests))
+	else:
+		lines.append("Completed quests: none")
+
+	if active_quests.size() > 0:
+		var active_titles: Array[String] = []
+		for quest_id in active_quests:
+			active_titles.append(active_quests[quest_id]["quest"].title)
+		lines.append("Active quests: " + ", ".join(active_titles))
+
+	if relationships.size() > 0:
+		var rel_lines: Array[String] = []
+		for npc_id in relationships:
+			rel_lines.append("%s: %d" % [npc_id, relationships[npc_id]])
+		lines.append("Relationship scores: " + ", ".join(rel_lines))
+
+	if npc_memory.size() > 0:
+		for npc_id in npc_memory:
+			var memories: Array = npc_memory[npc_id]["memories"]
+			if memories.size() > 0:
+				lines.append("What %s remembers: %s" % [npc_id, "; ".join(memories)])
+
+	return "\n".join(lines)

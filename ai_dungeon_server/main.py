@@ -218,3 +218,48 @@ enemy_attack should be between 3-8 for low danger, 8-15 for medium, 15-25 for hi
         encounter_data = None
 
     return {"encounter": encounter_data}
+
+
+class DirectorRequest(BaseModel):
+    world_summary: str
+    player_action: str
+
+
+@app.post("/director_action")
+def director_action(req: DirectorRequest):
+    prompt = f"""You are the Dungeon Master directing an ongoing fantasy RPG campaign.
+Here is everything you know about the world so far:
+
+{req.world_summary}
+
+The player now does this: {req.player_action}
+
+Using the history above, decide what happens. If something from the player's past (a betrayal, a kindness, a quest, a relationship) is relevant, let it surface naturally in the narration — for example, a reputation for betrayal might mean someone recognizes the player on sight.
+
+Respond with ONLY a valid JSON object, no markdown, no extra text:
+
+{{
+  "narration": "2-4 sentences of narration, informed by the world history",
+  "event": "one of: NONE, ENTER_AREA, COMBAT_START, ITEM_FOUND, NPC_REACTION, VILLAGE_ATTACKED, VILLAGE_SAVED",
+  "callback_reference": "a short phrase naming which past event (if any) influenced this response, or null"
+}}"""
+
+    response = model.generate_content(prompt)
+    raw_text = response.text.strip()
+
+    if raw_text.startswith("```"):
+        raw_text = raw_text.split("```")[1]
+        if raw_text.startswith("json"):
+            raw_text = raw_text[4:]
+        raw_text = raw_text.strip()
+
+    try:
+        structured_response = json.loads(raw_text)
+    except json.JSONDecodeError:
+        structured_response = {
+            "narration": raw_text,
+            "event": "NONE",
+            "callback_reference": None,
+        }
+
+    return structured_response

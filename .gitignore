@@ -13,6 +13,10 @@ venv/
 .env.*
 !.env.example
 
+.requirements.txt
+/requirements.txt
+requirements.txt
+
 .vscode/
 .idea/
 
